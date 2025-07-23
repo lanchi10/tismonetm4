@@ -3,750 +3,921 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>מדריך מקיף לריפוי בעיסוק - תסמונת MEPAN</title>
+    <title>מדריך מקיף לתסמונת MEPAN - מידע עדכני להורים</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Hebrew:wght@300;400;600;700&display=swap" rel="stylesheet">
-    
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        body { font-family: 'Noto Sans Hebrew', sans-serif; }
-        .gradient-bg { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); }
-        .soft-shadow { box-shadow: 0 10px 25px rgba(0,0,0,0.1); }
-        .hover-lift { transition: transform 0.3s ease; }
-        .hover-lift:hover { transform: translateY(-2px); }
-        .section-divider { border-right: 4px solid #4f46e5; }
-        .definition-box { 
-            background: linear-gradient(45deg, #f0f9ff, #e0f2fe);
-            border-right: 4px solid #0ea5e9;
+        body {
+            font-family: 'Heebo', Arial, sans-serif;
+            line-height: 1.8;
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
         }
-        .important-note {
-            background: linear-gradient(45deg, #fef3c7, #fde68a);
+        
+        /* High contrast sections */
+        .high-contrast-section {
+            background: #ffffff;
+            color: #1e293b;
+            border: 1px solid #e2e8f0;
+        }
+        
+        .dark-section {
+            background: #1e293b;
+            color: #f8fafc;
+        }
+        
+        .primary-section {
+            background: #0f172a;
+            color: #f1f5f9;
+        }
+        
+        .accent-section {
+            background: #0369a1;
+            color: #ffffff;
+        }
+        
+        .warning-section {
+            background: #fef3c7;
+            color: #92400e;
             border-right: 4px solid #f59e0b;
         }
-        .tip-box {
-            background: linear-gradient(45deg, #d1fae5, #a7f3d0);
+        
+        .success-section {
+            background: #d1fae5;
+            color: #065f46;
             border-right: 4px solid #10b981;
         }
-        .warning-box {
-            background: linear-gradient(45deg, #fee2e2, #fecaca);
-            border-right: 4px solid #ef4444;
+        
+        .info-section {
+            background: #dbeafe;
+            color: #1e40af;
+            border-right: 4px solid #3b82f6;
         }
         
-        /* Print optimizations */
+        .medical-term {
+            background: #1e293b;
+            color: #ffffff;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-weight: 600;
+        }
+        
+        .section-header {
+            background: #0f172a;
+            color: #ffffff;
+        }
+        
+        /* Improved readability */
+        h1, h2, h3, h4 {
+            color: #0f172a !important;
+        }
+        
+        .dark-section h1, .dark-section h2, .dark-section h3, .dark-section h4,
+        .primary-section h1, .primary-section h2, .primary-section h3, .primary-section h4,
+        .accent-section h1, .accent-section h2, .accent-section h3, .accent-section h4 {
+            color: #ffffff !important;
+        }
+        
+        /* Table styling */
+        .data-table th {
+            background: #1e293b;
+            color: #ffffff;
+        }
+        
+        .data-table td {
+            background: #ffffff;
+            color: #1e293b;
+            border: 1px solid #e2e8f0;
+        }
+        
+        /* Link styling */
+        a {
+            color: #0369a1;
+            text-decoration: underline;
+        }
+        
+        .dark-section a, .primary-section a, .accent-section a {
+            color: #93c5fd;
+        }
+        
+        /* Print optimization */
         @media print {
-            .no-print { display: none !important; }
-            .print-section { page-break-inside: avoid; }
-            body { font-size: 12pt; line-height: 1.4; }
-            h1 { font-size: 18pt; }
-            h2 { font-size: 16pt; }
-            h3 { font-size: 14pt; }
+            body { 
+                background: white; 
+                font-size: 12pt;
+                line-height: 1.6;
+            }
+            .high-contrast-section, .dark-section, .primary-section, .accent-section { 
+                background: white !important; 
+                color: black !important;
+                border: 1px solid #333 !important;
+            }
+            .section-header {
+                background: #333 !important;
+                color: white !important;
+            }
         }
-        
-        .nav-item {
-            transition: all 0.3s ease;
-            border-radius: 0.5rem;
-        }
-        .nav-item:hover {
-            background-color: rgba(79, 70, 229, 0.1);
-            transform: translateX(-5px);
-        }
-        
-        table { page-break-inside: avoid; }
-        tr { page-break-inside: avoid; }
     </style>
 </head>
-<body class="bg-gray-50 text-gray-800">
-    
-    <!-- Header -->
-    <header class="gradient-bg text-white py-8 mb-8 soft-shadow">
-        <div class="container mx-auto px-4">
-            <div class="text-center">
-                <i class="fas fa-brain text-6xl mb-4 opacity-90"></i>
-                <h1 class="text-4xl font-bold mb-2">מדריך מקיף לריפוי בעיסוק</h1>
-                <h2 class="text-2xl font-light mb-4">תסמונת MEPAN</h2>
-                <div class="bg-white bg-opacity-20 rounded-lg p-4 max-w-3xl mx-auto">
-                    <p class="text-lg leading-relaxed">
-                        <strong>MEPAN:</strong> Mitochondrial Enoyl-CoA Reductase Protein-Associated Neurodegeneration
-                    </p>
-                    <p class="text-sm mt-2 opacity-90">מדריך מבוסס ראיות לאסטרטגיות טיפול מעשיות</p>
+<body class="min-h-screen">
+    <div class="max-w-5xl mx-auto px-6 py-8">
+        
+        <!-- Header -->
+        <header class="text-center mb-12">
+            <div class="primary-section rounded-2xl shadow-2xl p-10 mb-8">
+                <h1 class="text-5xl font-bold mb-6">
+                    <i class="fas fa-dna text-blue-300 ml-4"></i>
+                    מדריך מקיף לתסמונת MEPAN
+                </h1>
+                <div class="accent-section rounded-xl p-6 text-center">
+                    <p class="text-2xl font-semibold">מידע מדעי עדכני ותמיכה מקצועית למשפחות</p>
+                    <p class="text-lg mt-3 opacity-90">מבוסס על מחקרים עדכניים 2024 ומומחיות קלינית</p>
                 </div>
             </div>
-        </div>
-    </header>
+        </header>
 
-    <div class="container mx-auto px-4 max-w-7xl">
-        
-        <!-- Navigation -->
-        <nav class="bg-white rounded-xl shadow-lg p-6 mb-8 no-print sticky top-4 z-10">
-            <h3 class="text-xl font-semibold mb-4 text-center text-indigo-700">
-                <i class="fas fa-compass mr-2"></i>ניווט מהיר
-            </h3>
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
-                <a href="#understanding" class="nav-item p-3 text-center text-sm hover:text-indigo-600">
-                    <i class="fas fa-dna block text-lg mb-1"></i>הבנת המחלה
-                </a>
-                <a href="#assessment" class="nav-item p-3 text-center text-sm hover:text-indigo-600">
-                    <i class="fas fa-search block text-lg mb-1"></i>הערכה
-                </a>
-                <a href="#interventions" class="nav-item p-3 text-center text-sm hover:text-indigo-600">
-                    <i class="fas fa-tools block text-lg mb-1"></i>התערבויות
-                </a>
-                <a href="#resources" class="nav-item p-3 text-center text-sm hover:text-indigo-600">
-                    <i class="fas fa-heart block text-lg mb-1"></i>משאבים
-                </a>
+        <!-- תקציר מנהלים -->
+        <section class="high-contrast-section rounded-2xl shadow-xl p-8 mb-8">
+            <div class="section-header rounded-lg p-4 mb-6">
+                <h2 class="text-3xl font-bold text-center">
+                    <i class="fas fa-clipboard-list text-blue-300 ml-3"></i>
+                    תקציר מנהלים - המידע החשוב ביותר
+                </h2>
             </div>
-        </nav>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="info-section rounded-lg p-6">
+                    <h3 class="text-xl font-bold mb-4">
+                        <i class="fas fa-info-circle ml-2"></i>
+                        עובדות בסיסיות
+                    </h3>
+                    <ul class="space-y-2 text-lg">
+                        <li><strong>שם מלא:</strong> ניוון עצבי הקשור לחלבון מיטוכונדריאלי</li>
+                        <li><strong>תורשה:</strong> אוטוזומלית רצסיבית</li>
+                        <li><strong>שכיחות:</strong> אולטרה-נדירה (13 מקרים ידועים)</li>
+                        <li><strong>שכיחות מוגברת:</strong> אוכלוסייה יהודית-אשכנזית</li>
+                    </ul>
+                </div>
+                <div class="success-section rounded-lg p-6">
+                    <h3 class="text-xl font-bold mb-4">
+                        <i class="fas fa-heart ml-2"></i>
+                        נקודות מעודדות
+                    </h3>
+                    <ul class="space-y-2 text-lg">
+                        <li>שימור יכולות קוגניטיביות ברוב המקרים</li>
+                        <li>כל החולים הידועים עדיין חיים</li>
+                        <li>טיפול DBS מבטיח לדיסטוניה</li>
+                        <li>מחקר פעיל לפיתוח תרופות</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
 
-        <!-- Section 1: Understanding MEPAN -->
-        <section id="understanding" class="print-section">
-            <div class="bg-white rounded-xl soft-shadow mb-8 overflow-hidden">
-                <div class="bg-indigo-600 text-white p-6">
-                    <h2 class="text-3xl font-bold flex items-center">
-                        <i class="fas fa-dna mr-3"></i>הבנת תסמונת MEPAN
-                    </h2>
+        <!-- פתיחה -->
+        <section class="high-contrast-section rounded-2xl shadow-xl p-8 mb-8">
+            <div class="section-header rounded-lg p-4 mb-6">
+                <h2 class="text-2xl font-bold">
+                    <i class="fas fa-heart text-red-300 ml-3"></i>
+                    מכתב פתיחה לכם, ההורים היקרים
+                </h2>
+            </div>
+            <div class="text-gray-800 space-y-6 text-lg">
+                <p class="text-xl font-medium">הורים יקרים,</p>
+                <p>קבלת אבחנה של תסמונת נדירה כמו MEPAN מעוררת שאלות רבות וחששות טבעיים. כמומחים העובדים עם ילדים עם מצבים נוירולוגיים מורכבים, אנו מבינים את הצורך שלכם במידע מדויק ומקצועי שיעזור לכם להבין את המצב ולקבל החלטות מושכלות.</p>
+                
+                <p>המדריך הזה נכתב במטרה לספק לכם מידע מקיף על תסמונת MEPAN - החל מהבסיס הגנטי והביולוגי, דרך התמונה הקלינית וההתקדמות הצפויה, ועד לאפשרויות הטיפול והתמיכה הזמינות כיום.</p>
+                
+                <div class="success-section rounded-lg p-6 mt-6">
+                    <p class="font-semibold text-xl">
+                        <i class="fas fa-lightbulb ml-2"></i>
+                        חשוב לזכור: למרות המורכבות של המצב, הידע והתמיכה הנכונים יכולים לעזור משמעותית בשיפור איכות החיים של הילד ושל כל המשפחה.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- הבסיס הגנטי -->
+        <section class="high-contrast-section rounded-2xl shadow-xl p-8 mb-8">
+            <div class="section-header rounded-lg p-4 mb-6">
+                <h2 class="text-2xl font-bold">
+                    <i class="fas fa-dna text-green-300 ml-3"></i>
+                    הבסיס הגנטי של המחלה
+                </h2>
+            </div>
+            <div class="text-gray-800 space-y-6">
+                <div class="accent-section rounded-lg p-6">
+                    <h3 class="text-xl font-bold mb-4">
+                        <i class="fas fa-microscope ml-2"></i>
+                        מהי תסמונת MEPAN?
+                    </h3>
+                    <p class="text-lg">תסמונת MEPAN הוא ראשי תיבות של: <span class="medical-term">Mitochondrial Enoyl-CoA Reductase Protein-Associated Neurodegeneration</span> - ניוון עצבי הקשור לחלבון מיטוכונדריאלי.</p>
                 </div>
                 
-                <div class="p-6 space-y-6">
-                    <!-- Genetic Basis -->
-                    <div class="definition-box p-6 rounded-lg">
-                        <h3 class="text-xl font-semibold mb-3 text-blue-800">
-                            <i class="fas fa-code mr-2"></i>הבסיס הגנטי והפתופיזיולוגי
-                        </h3>
-                        <div class="space-y-4">
-                            <p class="leading-relaxed">
-                                תסמונת MEPAN נגרמת על ידי מוטציות בגן <strong class="text-indigo-600">MECR</strong> הממוקם על כרומוזום 1. 
-                                הגן מקודד לאנזים מיטוכונדריאלי החיוני לייצור אנרגיה בתא.
-                            </p>
-                            
-                            <div class="bg-blue-50 p-4 rounded-lg">
-                                <h4 class="font-semibold text-blue-800 mb-2">
-                                    <i class="fas fa-info-circle mr-1"></i>הסבר מושגים:
-                                </h4>
-                                <ul class="space-y-2 text-sm">
-                                    <li><strong>מיטוכונדריה:</strong> "בתי הכוח" של התא, האחראים לייצור אנרגיה</li>
-                                    <li><strong>אנזים:</strong> חלבון המזרז תגובות כימיות בגוף</li>
-                                    <li><strong>תורשה רצסיבית:</strong> נדרשים שני עותקים פגומים (אחד מכל הורה) כדי לחלות</li>
+                <div class="info-section rounded-lg p-6">
+                    <h4 class="text-lg font-semibold mb-3">הגן MECR:</h4>
+                    <ul class="space-y-3 text-lg">
+                        <li><i class="fas fa-chevron-left text-blue-600 ml-2"></i>נמצא על <span class="medical-term">כרומוזום 1</span> (מיקום 1p35.3)</li>
+                        <li><i class="fas fa-chevron-left text-blue-600 ml-2"></i>מייצר חלבון חשוב לתפקוד המיטוכונדריה (בתי הכוח של התא)</li>
+                        <li><i class="fas fa-chevron-left text-blue-600 ml-2"></i>מעורב בייצור חומצות שומן במיטוכונדריה</li>
+                        <li><i class="fas fa-chevron-left text-blue-600 ml-2"></i>חיוני לייצור חומצה ליפואית - קו-פקטור חשוב</li>
+                    </ul>
+                </div>
+
+                <div class="warning-section rounded-lg p-6">
+                    <h4 class="text-lg font-semibold mb-3">תורשה אוטוזומלית רצסיבית:</h4>
+                    <div class="space-y-4">
+                        <p class="text-lg"><strong>משמעות:</strong> הילד חייב לרשת גן פגום מכל אחד מההורים כדי לפתח את המחלה.</p>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-4">
+                            <div class="high-contrast-section rounded p-4 shadow">
+                                <p class="font-semibold text-lg mb-2">סיכויים בהיריון הבא:</p>
+                                <ul class="text-base mt-2 space-y-2">
+                                    <li><strong>25%</strong> - ילד חולה</li>
+                                    <li><strong>50%</strong> - ילד נשא (בריא)</li>
+                                    <li><strong>25%</strong> - ילד בריא לחלוטין</li>
                                 </ul>
                             </div>
-                            
-                            <div class="important-note p-4 rounded-lg">
-                                <h4 class="font-semibold text-orange-800 mb-2">
-                                    <i class="fas fa-exclamation-triangle mr-1"></i>שכיחות מיוחדת:
-                                </h4>
-                                <p class="text-sm">המחלה נדירה ביותר, עם שכיחות גבוהה יותר באוכלוסייה האשכנזית בגלל "אפקט המייסדים"</p>
+                            <div class="high-contrast-section rounded p-4 shadow">
+                                <p class="font-semibold text-lg mb-2">המלצה חשובה:</p>
+                                <p class="text-base mt-2">ייעוץ גנטי לפני הריונות עתידיים</p>
                             </div>
                         </div>
                     </div>
+                </div>
 
-                    <!-- Clinical Presentation -->
-                    <div class="bg-gradient-to-r from-purple-50 to-pink-50 p-6 rounded-lg section-divider">
-                        <h3 class="text-xl font-semibold mb-4 text-purple-800">
-                            <i class="fas fa-stethoscope mr-2"></i>התמונה הקלינית - השילוש האופייני
-                        </h3>
-                        
-                        <div class="grid md:grid-cols-3 gap-4">
-                            <div class="bg-white p-4 rounded-lg shadow">
-                                <div class="text-center mb-3">
-                                    <i class="fas fa-walking text-3xl text-red-500"></i>
-                                </div>
-                                <h4 class="font-semibold text-center mb-2">הפרעות תנועה</h4>
-                                <ul class="text-sm space-y-1">
-                                    <li>• דיסטוניה (התכווצויות לא רצוניות)</li>
-                                    <li>• אטקסיה (קשיי קואורדינציה)</li>
-                                    <li>• נוקשות שרירים</li>
-                                    <li>• הופעה: גיל 1-6.5 שנים</li>
-                                </ul>
-                            </div>
-                            
-                            <div class="bg-white p-4 rounded-lg shadow">
-                                <div class="text-center mb-3">
-                                    <i class="fas fa-eye text-3xl text-blue-500"></i>
-                                </div>
-                                <h4 class="font-semibold text-center mb-2">פגיעה בראייה</h4>
-                                <ul class="text-sm space-y-1">
-                                    <li>• אטרופיה של עצב הראייה</li>
-                                    <li>• ירידה בחדות הראייה</li>
-                                    <li>• עיוורון פונקציונלי אפשרי</li>
-                                    <li>• הופעה: גיל 4-12 שנים</li>
-                                </ul>
-                            </div>
-                            
-                            <div class="bg-white p-4 rounded-lg shadow">
-                                <div class="text-center mb-3">
-                                    <i class="fas fa-comments text-3xl text-green-500"></i>
-                                </div>
-                                <h4 class="font-semibold text-center mb-2">דיבור ותקשורת</h4>
-                                <ul class="text-sm space-y-1">
-                                    <li>• דיסארתריה מתקדמת</li>
-                                    <li>• דיבור לא ברור</li>
-                                    <li>• קושי בהבעה</li>
-                                    <li>• שכל לרוב נשמר!</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Prognosis -->
-                    <div class="warning-box p-6 rounded-lg">
-                        <h3 class="text-xl font-semibold mb-3 text-red-800">
-                            <i class="fas fa-chart-line mr-2"></i>מהלך המחלה ופרוגנוזה
-                        </h3>
-                        <div class="space-y-3">
-                            <p class="leading-relaxed">
-                                MEPAN היא מחלה מתקדמת ללא ריפוי נוכחי. עם זאת, עם טיפול תומך מתאים, 
-                                ניתן לשפר משמעותית את איכות החיים והתפקוד.
-                            </p>
-                            <div class="bg-red-50 p-4 rounded">
-                                <p class="text-sm"><strong>חשוב לדעת:</strong> למרות המגבלות, הטיפול יכול לאט את ההידרדרות ולשמר תפקודים חיוניים</p>
-                            </div>
-                        </div>
+                <div class="info-section rounded-lg p-6">
+                    <h4 class="font-semibold text-lg mb-3">
+                        <i class="fas fa-chart-bar ml-2"></i>
+                        שכיחות המחלה:
+                    </h4>
+                    <div class="space-y-3">
+                        <p class="text-lg">תסמונת MEPAN היא <strong>אולטרה-נדירה</strong> - רק כ-13 מקרים תועדו בעולם בספרות הרפואית.</p>
+                        <p class="text-lg">שכיחות מוגברת נצפתה באוכלוסייה היהודית-אשכנזית:</p>
+                        <ul class="mt-3 space-y-2 text-base">
+                            <li>• וריאנט c.695G>A: שכיחות נשאות 1:311</li>
+                            <li>• וריאנט c.830+2dupT: שכיחות נשאות 1:136</li>
+                            <li>• שכיחות נשאות משולבת: כ-1:94</li>
+                        </ul>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Section 2: OT Assessment -->
-        <section id="assessment" class="print-section">
-            <div class="bg-white rounded-xl soft-shadow mb-8 overflow-hidden">
-                <div class="bg-emerald-600 text-white p-6">
-                    <h2 class="text-3xl font-bold flex items-center">
-                        <i class="fas fa-search mr-3"></i>הערכה בריפוי בעיסוק
-                    </h2>
+        <!-- פתופיזיולוגיה -->
+        <section class="high-contrast-section rounded-2xl shadow-xl p-8 mb-8">
+            <div class="section-header rounded-lg p-4 mb-6">
+                <h2 class="text-2xl font-bold">
+                    <i class="fas fa-cogs text-yellow-300 ml-3"></i>
+                    איך המוטציה פוגעת בגוף?
+                </h2>
+            </div>
+            <div class="text-gray-800 space-y-6">
+                <div class="warning-section rounded-lg p-6">
+                    <h3 class="text-xl font-bold mb-4">השרשרת הביולוגית:</h3>
+                    <div class="space-y-6">
+                        <div class="flex items-center space-x-4">
+                            <div class="bg-red-600 p-3 rounded-full flex-shrink-0">
+                                <i class="fas fa-exclamation text-white"></i>
+                            </div>
+                            <div class="flex-1">
+                                <p class="font-semibold text-lg">שלב 1: פגם בגן MECR</p>
+                                <p class="text-base">הגן לא מייצר חלבון תקין</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-center space-x-4">
+                            <div class="bg-orange-600 p-3 rounded-full flex-shrink-0">
+                                <i class="fas fa-arrow-down text-white"></i>
+                            </div>
+                            <div class="flex-1">
+                                <p class="font-semibold text-lg">שלב 2: פגיעה במיטוכונדריה</p>
+                                <p class="text-base">בעיה בייצור חומצות שומן וחומצה ליפואית</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-center space-x-4">
+                            <div class="bg-red-600 p-3 rounded-full flex-shrink-0">
+                                <i class="fas fa-battery-quarter text-white"></i>
+                            </div>
+                            <div class="flex-1">
+                                <p class="font-semibold text-lg">שלב 3: קושי בייצור אנרגיה</p>
+                                <p class="text-base">תאי העצב לא מקבלים מספיק אנרגיה</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-center space-x-4">
+                            <div class="bg-purple-600 p-3 rounded-full flex-shrink-0">
+                                <i class="fas fa-brain text-white"></i>
+                            </div>
+                            <div class="flex-1">
+                                <p class="font-semibold text-lg">שלב 4: פגיעה בגרעיני הבסיס</p>
+                                <p class="text-base">נזק לאזורי המוח האחראים לתנועה</p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                
-                <div class="p-6">
-                    <div class="tip-box p-6 rounded-lg mb-6">
-                        <h3 class="text-xl font-semibold mb-3 text-green-800">
-                            <i class="fas fa-bullseye mr-2"></i>עקרונות הערכה מרכזיים
-                        </h3>
-                        <ul class="space-y-2">
-                            <li class="flex items-start"><i class="fas fa-check text-green-600 mr-2 mt-1"></i>הערכה מקיפה של כל תחומי התפקוד</li>
-                            <li class="flex items-start"><i class="fas fa-check text-green-600 mr-2 mt-1"></i>התמקדות בחוזקות ולא רק בקשיים</li>
-                            <li class="flex items-start"><i class="fas fa-check text-green-600 mr-2 mt-1"></i>שיתוף המשפחה בתהליך</li>
-                            <li class="flex items-start"><i class="fas fa-check text-green-600 mr-2 mt-1"></i>הערכה דינמית שמתעדכנת עם התקדמות המחלה</li>
+
+                <div class="info-section rounded-lg p-6">
+                    <h4 class="text-lg font-semibold mb-3">
+                        <i class="fas fa-lightbulb ml-2"></i>
+                        הסבר פשוט:
+                    </h4>
+                    <p class="text-lg">דמיינו את המיטוכונדריה כמו בתי כוח קטנים בתוך כל תא. כאשר הגן MECR פגום, בתי הכוח האלה לא עובדים כמו שצריך. תאי העצב, שצריכים הרבה אנרגיה כדי לעבוד, סובלים הכי הרבה מהבעיה הזו. זה בעיקר פוגע באזורי המוח שאחראים לתנועה ולראייה.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- התמונה הקלינית -->
+        <section class="high-contrast-section rounded-2xl shadow-xl p-8 mb-8">
+            <div class="section-header rounded-lg p-4 mb-6">
+                <h2 class="text-2xl font-bold">
+                    <i class="fas fa-stethoscope text-red-300 ml-3"></i>
+                    התמונה הקלינית - שלישיית הסימנים
+                </h2>
+            </div>
+            <div class="text-gray-800 space-y-6">
+                <div class="accent-section rounded-lg p-6 mb-6">
+                    <h3 class="text-xl font-bold mb-4">
+                        <i class="fas fa-list-ol ml-2"></i>
+                        שלושת הסימנים העיקריים
+                    </h3>
+                    <p class="text-lg">תסמונת MEPAN מתאפיינת בשלושה סימנים עיקריים, המופיעים בדרך כלל בסדר הזה:</p>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                    <div class="warning-section rounded-lg p-6">
+                        <div class="text-center mb-4">
+                            <i class="fas fa-running text-4xl mb-2" style="color: #dc2626;"></i>
+                            <h4 class="text-lg font-bold">1. דיסטוניה</h4>
+                            <p class="text-sm">גיל הופעה: 1-6.5 שנים</p>
+                        </div>
+                        <ul class="text-sm space-y-2">
+                            <li><i class="fas fa-dot-circle ml-1" style="color: #dc2626;"></i>התכווצויות שרירים לא רצוניות</li>
+                            <li><i class="fas fa-dot-circle ml-1" style="color: #dc2626;"></i>תנוחות לא תקינות</li>
+                            <li><i class="fas fa-dot-circle ml-1" style="color: #dc2626;"></i>קושי בהליכה ותנועה</li>
+                            <li><i class="fas fa-dot-circle ml-1" style="color: #dc2626;"></i>מתקדמת עם הזמן</li>
                         </ul>
                     </div>
 
-                    <!-- Assessment Areas Table -->
-                    <div class="overflow-x-auto">
-                        <table class="w-full border-collapse bg-gray-50 rounded-lg overflow-hidden shadow">
-                            <thead class="bg-emerald-600 text-white">
-                                <tr>
-                                    <th class="p-4 text-right">תחום הערכה</th>
-                                    <th class="p-4 text-right">רכיבים מרכזיים</th>
-                                    <th class="p-4 text-right">כלי הערכה מומלצים</th>
-                                </tr>
-                            </thead>
-                            <tbody class="divide-y divide-gray-200">
-                                <tr class="hover:bg-emerald-50">
-                                    <td class="p-4 font-semibold">תפקודים מוטוריים</td>
-                                    <td class="p-4">טונוס, קואורדינציה, כוח, תכנון תנועה, יציבה</td>
-                                    <td class="p-4">GMFCS, MACS, תצפית מובנית</td>
-                                </tr>
-                                <tr class="hover:bg-emerald-50">
-                                    <td class="p-4 font-semibold">עיבוד חושי</td>
-                                    <td class="p-4">פרופריוספציה, ווסטיבולרי, מגע, תגובות יתר/תת</td>
-                                    <td class="p-4">SPM-2, תצפיות קליניות</td>
-                                </tr>
-                                <tr class="hover:bg-emerald-50">
-                                    <td class="p-4 font-semibold">תפקודי ראייה</td>
-                                    <td class="p-4">עקיבה, מיקוד, תפיסה חזותית</td>
-                                    <td class="p-4">TVPS, הערכת ראייה ירודה</td>
-                                </tr>
-                                <tr class="hover:bg-emerald-50">
-                                    <td class="p-4 font-semibold">פעילויות יומיום</td>
-                                    <td class="p-4">האכלה, לבוש, רחצה, משחק</td>
-                                    <td class="p-4">WeeFIM, COPM, תצפית מובנית</td>
-                                </tr>
-                                <tr class="hover:bg-emerald-50">
-                                    <td class="p-4 font-semibold">תקשורת</td>
-                                    <td class="p-4">הבעה, הבנה, אינטראקציה</td>
-                                    <td class="p-4">שיתוף עם קלינאות תקשורת</td>
-                                </tr>
-                            </tbody>
-                        </table>
+                    <div class="info-section rounded-lg p-6">
+                        <div class="text-center mb-4">
+                            <i class="fas fa-eye text-4xl mb-2" style="color: #1d4ed8;"></i>
+                            <h4 class="text-lg font-bold">2. ניוון עצב הראייה</h4>
+                            <p class="text-sm">גיל הופעה: 4-12 שנים</p>
+                        </div>
+                        <ul class="text-sm space-y-2">
+                            <li><i class="fas fa-dot-circle ml-1" style="color: #1d4ed8;"></i>ירידה בחדות הראייה</li>
+                            <li><i class="fas fa-dot-circle ml-1" style="color: #1d4ed8;"></i>הצרת שדה הראייה</li>
+                            <li><i class="fas fa-dot-circle ml-1" style="color: #1d4ed8;"></i>מתקדמת לעיוורון חלקי/מלא</li>
+                            <li><i class="fas fa-dot-circle ml-1" style="color: #1d4ed8;"></i>לא ניתנת לתיקון במשקפיים</li>
+                        </ul>
                     </div>
+
+                    <div class="success-section rounded-lg p-6">
+                        <div class="text-center mb-4">
+                            <i class="fas fa-brain text-4xl mb-2" style="color: #059669;"></i>
+                            <h4 class="text-lg font-bold">3. שינויים ב-MRI</h4>
+                            <p class="text-sm">נראים בבדיקות הדמיה</p>
+                        </div>
+                        <ul class="text-sm space-y-2">
+                            <li><i class="fas fa-dot-circle ml-1" style="color: #059669;"></i>שינויים בגרעיני הבסיס</li>
+                            <li><i class="fas fa-dot-circle ml-1" style="color: #059669;"></i>אותות היפראינטנסיביים ב-T2</li>
+                            <li><i class="fas fa-dot-circle ml-1" style="color: #059669;"></i>סימטריים ודו-צדדיים</li>
+                            <li><i class="fas fa-dot-circle ml-1" style="color: #059669;"></i>מאשרים את האבחנה</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="warning-section rounded-lg p-6">
+                    <h4 class="text-lg font-semibold mb-3">
+                        <i class="fas fa-clipboard-list ml-2"></i>
+                        סימנים נוספים שעלולים להופיע:
+                    </h4>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <ul class="space-y-2 text-base">
+                            <li><i class="fas fa-chevron-left ml-2" style="color: #d97706;"></i>דיסארתריה (קושי בדיבור)</li>
+                            <li><i class="fas fa-chevron-left ml-2" style="color: #d97706;"></i>קשיי בליעה</li>
+                            <li><i class="fas fa-chevron-left ml-2" style="color: #d97706;"></i>אטקסיה (בעיות איזון)</li>
+                        </ul>
+                        <ul class="space-y-2 text-base">
+                            <li><i class="fas fa-chevron-left ml-2" style="color: #d97706;"></i>כוריאה (תנועות לא רצוניות)</li>
+                            <li><i class="fas fa-chevron-left ml-2" style="color: #d97706;"></i>ירידה קוגניטיבית (במקרים מסוימים)</li>
+                            <li><i class="fas fa-chevron-left ml-2" style="color: #d97706;"></i>ניסטגמוס (תנועות עיניים)</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="success-section rounded-lg p-6">
+                    <h4 class="font-semibold text-lg mb-3">
+                        <i class="fas fa-heart ml-2"></i>
+                        חשוב לזכור:
+                    </h4>
+                    <p class="text-lg">רבים מהילדים שומרים על יכולות קוגניטיביות (חשיבה והבנה) טובות, במיוחד בשלבים המוקדמים של המחלה. זה מאפשר להם להמשיך ללמוד, לתקשר ולהפגין אישיות וסקרנות, על אף המגבלות הגופניות.</p>
                 </div>
             </div>
         </section>
 
-        <!-- Section 3: Interventions -->
-        <section id="interventions" class="print-section">
-            <div class="bg-white rounded-xl soft-shadow mb-8 overflow-hidden">
-                <div class="bg-purple-600 text-white p-6">
-                    <h2 class="text-3xl font-bold flex items-center">
-                        <i class="fas fa-tools mr-3"></i>אסטרטגיות טיפול והתערבות
-                    </h2>
-                </div>
-                
-                <div class="p-6 space-y-8">
+        <!-- התקדמות המחלה -->
+        <section class="high-contrast-section rounded-2xl shadow-xl p-8 mb-8">
+            <div class="section-header rounded-lg p-4 mb-6">
+                <h2 class="text-2xl font-bold">
+                    <i class="fas fa-chart-line text-purple-300 ml-3"></i>
+                    התקדמות המחלה - מה לצפות
+                </h2>
+            </div>
+            <div class="text-gray-800 space-y-6">
+                <div class="info-section rounded-lg p-6">
+                    <h3 class="text-xl font-bold mb-4">
+                        <i class="fas fa-timeline ml-2"></i>
+                        ציר הזמן הטיפוסי
+                    </h3>
                     
-                    <!-- Motor Issues -->
-                    <div class="section-divider pl-6">
-                        <h3 class="text-2xl font-semibold mb-4 text-purple-800">
-                            <i class="fas fa-running mr-2"></i>טיפול בתסמינים מוטוריים
-                        </h3>
-                        
-                        <div class="grid md:grid-cols-2 gap-6">
-                            <div class="space-y-4">
-                                <h4 class="font-semibold text-lg">מיצוב ותמיכה יציבתית:</h4>
-                                <ul class="space-y-2 text-sm">
-                                    <li>• כיסאות ומערכות ישיבה מותאמות</li>
-                                    <li>• תמיכות צד, משענות ראש ורצועות</li>
-                                    <li>• מיצוב סימטרי להפחתת דיסטוניה</li>
-                                    <li>• שימוש בכריות ותמיכות נוספות</li>
-                                </ul>
-                                
-                                <h4 class="font-semibold text-lg">טווח תנועה ומתיחות:</h4>
-                                <ul class="space-y-2 text-sm">
-                                    <li>• תרגילי ROM יומיים לכל המפרקים</li>
-                                    <li>• מתיחות עדינות וממושכות</li>
-                                    <li>• סדים דינמיים לשמירה על מתיחה</li>
-                                    <li>• מניעת קונטרקטורות</li>
-                                </ul>
+                    <div class="space-y-6">
+                        <div class="flex items-start space-x-4">
+                            <div class="bg-green-600 p-3 rounded-full flex-shrink-0">
+                                <i class="fas fa-baby text-white"></i>
                             </div>
-                            
-                            <div class="space-y-4">
-                                <h4 class="font-semibold text-lg">עזרי ניידות:</h4>
-                                <ul class="space-y-2 text-sm">
-                                    <li>• הליכונים עם תמיכות יציבתיות</li>
-                                    <li>• כיסאות גלגלים ידניים/חשמליים</li>
-                                    <li>• מעמדים לעמידה</li>
-                                    <li>• התאמת הבית לנגישות</li>
-                                </ul>
-                                
-                                <h4 class="font-semibold text-lg">התאמות סביבתיות:</h4>
-                                <ul class="space-y-2 text-sm">
-                                    <li>• רמפות ומעברים נגישים</li>
-                                    <li>• הסרת מכשולים ופינות חדות</li>
-                                    <li>• משטחים אנטי-החלקה</li>
-                                    <li>• ידיות אחיזה במקומות מתאימים</li>
-                                </ul>
+                            <div class="flex-1">
+                                <h4 class="font-semibold text-lg">שנה ראשונה - שנתיים</h4>
+                                <p class="text-base">התפתחות תקינה לרוב. ייתכנו עיכובים קלים במוטוריקה גסה.</p>
                             </div>
                         </div>
-                    </div>
 
-                    <!-- ADL Equipment Table -->
-                    <div class="bg-gradient-to-r from-blue-50 to-indigo-50 p-6 rounded-lg">
-                        <h3 class="text-2xl font-semibold mb-4 text-indigo-800">
-                            <i class="fas fa-utensils mr-2"></i>ציוד מותאם לפעילויות יום-יום
-                        </h3>
-                        
-                        <div class="overflow-x-auto">
-                            <table class="w-full border-collapse bg-white rounded-lg overflow-hidden shadow">
-                                <thead class="bg-indigo-600 text-white">
-                                    <tr>
-                                        <th class="p-3 text-right">תחום תפקודי</th>
-                                        <th class="p-3 text-right">אתגרים נפוצים</th>
-                                        <th class="p-3 text-right">פתרונות Low-Tech</th>
-                                        <th class="p-3 text-right">פתרונות High-Tech</th>
-                                    </tr>
-                                </thead>
-                                <tbody class="divide-y divide-gray-200 text-sm">
-                                    <tr class="hover:bg-indigo-50">
-                                        <td class="p-3 font-semibold">האכלה</td>
-                                        <td class="p-3">אחיזה חלשה, רעד, קושי בקואורדינציה</td>
-                                        <td class="p-3">כלים עם ידיות עבות, צלחות עם שוליים, משטחים אנטי-החלקה</td>
-                                        <td class="p-3">כפיות/מזלגות מייצבים (Liftware)</td>
-                                    </tr>
-                                    <tr class="hover:bg-indigo-50">
-                                        <td class="p-3 font-semibold">הלבשה</td>
-                                        <td class="p-3">קושי עם כפתורים, רוכסנים, שרוכים</td>
-                                        <td class="p-3">סקוץ' במקום כפתורים, שרוכים אלסטיים, מקל הלבשה</td>
-                                        <td class="p-3">כפתורים מגנטיים, בגדים מותאמים</td>
-                                    </tr>
-                                    <tr class="hover:bg-indigo-50">
-                                        <td class="p-3 font-semibold">טיפוח</td>
-                                        <td class="p-3">קושי באחיזה, הגעה למקומות</td>
-                                        <td class="p-3">מברשות ארוכות, ידיות אחיזה באמבטיה</td>
-                                        <td class="p-3">מברשות שיניים חשמליות</td>
-                                    </tr>
-                                    <tr class="hover:bg-indigo-50">
-                                        <td class="p-3 font-semibold">כתיבה</td>
-                                        <td class="p-3">מוטוריקה עדינה לקויה</td>
-                                        <td class="p-3">עטים כבדים, משטח כתיבה משופע</td>
-                                        <td class="p-3">תוכנות זיהוי דיבור, מקלדות מותאמות</td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-
-                    <!-- Communication and AAC -->
-                    <div class="section-divider pl-6">
-                        <h3 class="text-2xl font-semibold mb-4 text-purple-800">
-                            <i class="fas fa-comments mr-2"></i>תקשורת תומכת וחליפית (AAC)
-                        </h3>
-                        
-                        <div class="important-note p-6 rounded-lg mb-4">
-                            <p class="leading-relaxed">
-                                <strong>עיקרון מרכזי:</strong> בגלל ששכל הילד נשמר בדרך כלל, חשוב מאוד לספק אמצעי תקשורת 
-                                שיאפשרו לו להביע את עצמו למרות קשיי הדיבור המתפתחים.
-                            </p>
-                        </div>
-                        
-                        <!-- AAC Progression Table -->
-                        <div class="overflow-x-auto">
-                            <table class="w-full border-collapse bg-gray-50 rounded-lg overflow-hidden shadow">
-                                <thead class="bg-purple-600 text-white">
-                                    <tr>
-                                        <th class="p-3 text-right">שלב המחלה</th>
-                                        <th class="p-3 text-right">מטרת התקשורת</th>
-                                        <th class="p-3 text-right">Low-Tech AAC</th>
-                                        <th class="p-3 text-right">High-Tech AAC</th>
-                                        <th class="p-3 text-right">שיטת גישה</th>
-                                    </tr>
-                                </thead>
-                                <tbody class="divide-y divide-gray-200 text-sm">
-                                    <tr class="hover:bg-purple-50">
-                                        <td class="p-3 font-semibold">מוקדם</td>
-                                        <td class="p-3">השלמת דיבור טבעי</td>
-                                        <td class="p-3">לוחות אלפבית, לוחות תמונות</td>
-                                        <td class="p-3">אפליקציות טקסט-לדיבור פשוטות</td>
-                                        <td class="p-3">מגע ישיר</td>
-                                    </tr>
-                                    <tr class="hover:bg-purple-50">
-                                        <td class="p-3 font-semibold">אמצעי</td>
-                                        <td class="p-3">תקשורת עיקרית אמינה</td>
-                                        <td class="p-3">ספר תקשורת מקיף</td>
-                                        <td class="p-3">מכשירי SGD (Proloquo2Go, TouchChat)</td>
-                                        <td class="p-3">מגע ישיר, מצביע ראש</td>
-                                    </tr>
-                                    <tr class="hover:bg-purple-50">
-                                        <td class="p-3 font-semibold">מתקדם</td>
-                                        <td class="p-3">תקשורת עשירה למרות מגבלות</td>
-                                        <td class="p-3">סריקה בעזרת שותף</td>
-                                        <td class="p-3">מכשירים מלאים + בקרת סביבה</td>
-                                        <td class="p-3">מתגים, מיקוד מבט</td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-
-                    <!-- Vision Management -->
-                    <div class="section-divider pl-6">
-                        <h3 class="text-2xl font-semibold mb-4 text-purple-800">
-                            <i class="fas fa-eye mr-2"></i>ניהול ליקוי ראייה
-                        </h3>
-                        
-                        <div class="grid md:grid-cols-2 gap-6">
-                            <div class="bg-blue-50 p-4 rounded-lg">
-                                <h4 class="font-semibold text-blue-800 mb-3">התאמות סביבתיות:</h4>
-                                <ul class="space-y-2 text-sm">
-                                    <li>• תאורה בניגודיות גבוהה</li>
-                                    <li>• ארגון עקבי של חפצים</li>
-                                    <li>• צבעים בולטים לסימון</li>
-                                    <li>• הפחתת סנוור</li>
-                                    <li>• מסלולים ברורים וללא מכשולים</li>
-                                </ul>
+                        <div class="flex items-start space-x-4">
+                            <div class="bg-yellow-600 p-3 rounded-full flex-shrink-0">
+                                <i class="fas fa-child text-white"></i>
                             </div>
-                            
-                            <div class="bg-green-50 p-4 rounded-lg">
-                                <h4 class="font-semibold text-green-800 mb-3">עזרי ראייה וטכנולוגיה:</h4>
-                                <ul class="space-y-2 text-sm">
-                                    <li>• זכוכיות מגדלות ידניות</li>
-                                    <li>• מגדילים אלקטרוניים (CCTV)</li>
-                                    <li>• תוכנות הקראת מסך</li>
-                                    <li>• מכשירים מדברים</li>
-                                    <li>• אימון בכתב ברייל (כשמתאים)</li>
-                                </ul>
+                            <div class="flex-1">
+                                <h4 class="font-semibold text-lg">גילאי 1-6</h4>
+                                <p class="text-base">תחילת הדיסטוניה - תנועות לא תקינות, קשיי הליכה, נפילות תכופות.</p>
                             </div>
                         </div>
-                        
-                        <div class="tip-box p-4 rounded-lg mt-4">
-                            <p class="text-sm">
-                                <strong>טיפ חשוב:</strong> התחילו ההכנות לליקוי הראייה עוד לפני שהוא הופך חמור. 
-                                הכירו לילד אסטרטגיות פיצוי מוקדם כדי שיהיה מוכן.
-                            </p>
+
+                        <div class="flex items-start space-x-4">
+                            <div class="bg-blue-600 p-3 rounded-full flex-shrink-0">
+                                <i class="fas fa-eye-slash text-white"></i>
+                            </div>
+                            <div class="flex-1">
+                                <h4 class="font-semibold text-lg">גילאי 4-12</h4>
+                                <p class="text-base">התחלת בעיות ראייה - ירידה הדרגתית בחדות הראייה.</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start space-x-4">
+                            <div class="bg-purple-600 p-3 rounded-full flex-shrink-0">
+                                <i class="fas fa-wheelchair text-white"></i>
+                            </div>
+                            <div class="flex-1">
+                                <h4 class="font-semibold text-lg">גיל בית ספר - בגרות</h4>
+                                <p class="text-base">הצורך בעזרים טכנולוגיים, כיסא גלגלים, מערכות תקשורת תומכת.</p>
+                            </div>
                         </div>
                     </div>
+                </div>
+
+                <div class="warning-section rounded-lg p-6">
+                    <h4 class="text-lg font-semibold mb-3">
+                        <i class="fas fa-exclamation-triangle ml-2"></i>
+                        חשוב לזכור
+                    </h4>
+                    <div class="space-y-3 text-base">
+                        <p><strong>שונות בין ילדים:</strong> קצב ההתקדמות משתנה מאוד בין ילדים שונים, אפילו בין אחים.</p>
+                        <p><strong>גורמים מחמירים:</strong> חום, מחלות, לחץ עלולים להחמיר זמנית את התסמינים.</p>
+                        <p><strong>תקופות יציבות:</strong> לרוב יש תקופות של יציבות יחסית בין השינויים.</p>
+                    </div>
+                </div>
+
+                <div class="success-section rounded-lg p-6">
+                    <h4 class="text-lg font-semibold mb-3">
+                        <i class="fas fa-lightbulb ml-2"></i>
+                        התערבות מוקדמת
+                    </h4>
+                    <p class="text-base">ככל שמתחילים טיפולים תומכים מוקדם יותר, כך אפשר לשמר יכולות קיימות לזמן רב יותר ולשפר את איכות החיים.</p>
                 </div>
             </div>
         </section>
 
-        <!-- Section 4: Family Support -->
-        <section id="family-support" class="print-section">
-            <div class="bg-white rounded-xl soft-shadow mb-8 overflow-hidden">
-                <div class="bg-pink-600 text-white p-6">
-                    <h2 class="text-3xl font-bold flex items-center">
-                        <i class="fas fa-users mr-3"></i>תמיכה פסיכו-סוציאלית
-                    </h2>
+        <!-- פרוגנוזה ותוחלת חיים -->
+        <section class="high-contrast-section rounded-2xl shadow-xl p-8 mb-8">
+            <div class="section-header rounded-lg p-4 mb-6">
+                <h2 class="text-2xl font-bold">
+                    <i class="fas fa-hourglass-half text-orange-300 ml-3"></i>
+                    פרוגנוזה ותוחלת חיים - מידע הוגן
+                </h2>
+            </div>
+            <div class="text-gray-800 space-y-6">
+                <div class="accent-section rounded-lg p-6">
+                    <h3 class="text-xl font-bold mb-4">
+                        <i class="fas fa-chart-bar ml-2"></i>
+                        מה יודעים היום
+                    </h3>
+                    <p class="text-lg">בשל נדירות המחלה (רק 13 מקרים תועדו), המידע על תוחלת חיים ומהלך ארוך טווח מוגבל. עם זאת, יש לנו מידע חשוב:</p>
                 </div>
-                
-                <div class="p-6">
-                    <div class="definition-box p-6 rounded-lg mb-6">
-                        <h3 class="text-xl font-semibold mb-3 text-blue-800">
-                            <i class="fas fa-heart mr-2"></i>ההיבט הרגשי הייחודי של MEPAN
-                        </h3>
-                        <p class="leading-relaxed mb-3">
-                            אחד המאפיינים הקשים ביותר של MEPAN הוא <strong>"הנתק האכזרי"</strong> 
-                            בין השכל השמור של הילד לבין יכולותיו הפיזיות המתדרדרות.
-                        </p>
-                        <p class="text-sm bg-blue-100 p-3 rounded">
-                            הילד מבין מה קורה לו, רוצה לתקשר ולהשתתף, אבל גופו לא מציית. 
-                            זהו אתגר רגשי עצום שדורש התמודדות מיוחדת.
-                        </p>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="success-section rounded-lg p-6">
+                        <h4 class="text-lg font-semibold mb-3">
+                            <i class="fas fa-check-circle ml-2"></i>
+                            עובדות מעודדות
+                        </h4>
+                        <ul class="space-y-2 text-base">
+                            <li><i class="fas fa-heart ml-2" style="color: #059669;"></i>החולים הוותיקים ביותר הם כיום בשנות ה-40 וה-50</li>
+                            <li><i class="fas fa-heart ml-2" style="color: #059669;"></i>המחלה אינה פוגעת בלב, כליות או כבד</li>
+                            <li><i class="fas fa-heart ml-2" style="color: #059669;"></i>היכולות הקוגניטיביות נשמרות לרוב</li>
+                            <li><i class="fas fa-heart ml-2" style="color: #059669;"></i>איכות החיים יכולה להיות טובה עם תמיכה נכונה</li>
+                        </ul>
                     </div>
 
-                    <div class="grid md:grid-cols-2 gap-6">
-                        <div class="space-y-4">
-                            <h3 class="text-lg font-semibold text-pink-700">תמיכה בילד:</h3>
-                            <ul class="space-y-2 text-sm">
-                                <li>• שמירה על תחושת מסוגלות עצמית</li>
-                                <li>• עידוד השתתפות בכל דרך אפשרית</li>
-                                <li>• הכרה ברגשותיו ואימוץ</li>
-                                <li>• מתן בחירות וחירות להחליט</li>
-                                <li>• שילוב פעילויות מהנות ומשמעותיות</li>
+                    <div class="warning-section rounded-lg p-6">
+                        <h4 class="text-lg font-semibold mb-3">
+                            <i class="fas fa-exclamation-circle ml-2"></i>
+                            אתגרים צפויים
+                        </h4>
+                        <ul class="space-y-2 text-base">
+                            <li><i class="fas fa-triangle-exclamation ml-2" style="color: #d97706;"></i>תלות הולכת וגוברת בעזרים טכנולוגיים</li>
+                            <li><i class="fas fa-triangle-exclamation ml-2" style="color: #d97706;"></i>אובדן ראייה מתקדם</li>
+                            <li><i class="fas fa-triangle-exclamation ml-2" style="color: #d97706;"></i>קשיי תקשורת מילולית</li>
+                            <li><i class="fas fa-triangle-exclamation ml-2" style="color: #d97706;"></i>צורך בטיפול וסיוע מתמשכים</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="info-section rounded-lg p-6">
+                    <h4 class="text-lg font-semibold mb-3">
+                        <i class="fas fa-shield-alt ml-2"></i>
+                        גורמי סיכון לסיבוכים
+                    </h4>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <p class="font-semibold mb-2 text-base">סיכונים עיקריים:</p>
+                            <ul class="text-sm space-y-1">
+                                <li>• דלקות ריאות (מאספירציה)</li>
+                                <li>• תת-תזונה</li>
+                                <li>• עיוותי עמוד שדרה</li>
+                                <li>• פצעי לחץ</li>
                             </ul>
                         </div>
-                        
-                        <div class="space-y-4">
-                            <h3 class="text-lg font-semibold text-pink-700">תמיכה במשפחה:</h3>
-                            <ul class="space-y-2 text-sm">
-                                <li>• קבוצות תמיכה למשפחות</li>
-                                <li>• ייעוץ גנטי וייעוץ משפחתי</li>
-                                <li>• מידע ברור על מהלך המחלה</li>
-                                <li>• חיבור למשפחות אחרות</li>
-                                <li>• תמיכה כלכלית ומשפטית</li>
+                        <div>
+                            <p class="font-semibold mb-2 text-base">מניעה:</p>
+                            <ul class="text-sm space-y-1">
+                                <li>• מעקב רפואי סדיר</li>
+                                <li>• טיפול פיזיותרפי</li>
+                                <li>• תזונה מותאמת</li>
+                                <li>• מיקום נכון</li>
                             </ul>
                         </div>
                     </div>
                 </div>
+
+                <div class="primary-section rounded-lg p-6 text-center">
+                    <h4 class="text-xl font-bold mb-3">
+                        <i class="fas fa-heart ml-2"></i>
+                        המסר החשוב
+                    </h4>
+                    <p class="text-lg">למרות האתגרים, ילדים עם MEPAN יכולים לחיות חיים משמעותיים ועשירים בתוך הגבולות של מצבם. הטיפול התומך והאהבה המשפחתית הם המפתח לאיכות חיים טובה.</p>
+                </div>
             </div>
         </section>
 
-        <!-- Section 5: Resources -->
-        <section id="resources" class="print-section">
-            <div class="bg-white rounded-xl soft-shadow mb-8 overflow-hidden">
-                <div class="bg-orange-600 text-white p-6">
-                    <h2 class="text-3xl font-bold flex items-center">
-                        <i class="fas fa-heart mr-3"></i>מקורות תמיכה ומשאבים
-                    </h2>
+        <!-- גישות טיפול -->
+        <section class="high-contrast-section rounded-2xl shadow-xl p-8 mb-8">
+            <div class="section-header rounded-lg p-4 mb-6">
+                <h2 class="text-2xl font-bold">
+                    <i class="fas fa-user-md text-green-300 ml-3"></i>
+                    גישות טיפול נוכחיות ומחקרים
+                </h2>
+            </div>
+            <div class="text-gray-800 space-y-6">
+                <div class="warning-section rounded-lg p-6">
+                    <h3 class="text-xl font-bold mb-4">
+                        <i class="fas fa-info-circle ml-2"></i>
+                        מצב הטיפול כיום
+                    </h3>
+                    <p class="mb-4 text-lg">כרגע אין ריפוי ספציפי לתסמונת MEPAN. הטיפול מתמקד בניהול תסמינים ושיפור איכות החיים.</p>
+                    <p class="font-semibold text-lg">גישת הטיפול היא תומכת ורב-תחומית.</p>
                 </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="info-section rounded-lg p-6">
+                        <h4 class="text-lg font-semibold mb-4">
+                            <i class="fas fa-pills ml-2"></i>
+                            טיפול תרופתי
+                        </h4>
+                        <ul class="space-y-3 text-base">
+                            <li class="flex items-start">
+                                <i class="fas fa-dot-circle ml-2 mt-1" style="color: #1d4ed8;"></i>
+                                <div>
+                                    <p class="font-semibold">לדיסטוניה:</p>
+                                    <p class="text-sm">בקלופן, תרופות אנטיכולינרגיות, בוטוקס</p>
+                                </div>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-dot-circle ml-2 mt-1" style="color: #1d4ed8;"></i>
+                                <div>
+                                    <p class="font-semibold">לפרכוסים:</p>
+                                    <p class="text-sm">תרופות אנטי-אפילפטיות בהתאם לצורך</p>
+                                </div>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-dot-circle ml-2 mt-1" style="color: #1d4ed8;"></i>
+                                <div>
+                                    <p class="font-semibold">תוספי תזונה ניסיוניים:</p>
+                                    <p class="text-sm">חומצה אלפא-ליפואית, קואנזים Q10</p>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="success-section rounded-lg p-6">
+                        <h4 class="text-lg font-semibold mb-4">
+                            <i class="fas fa-hands-helping ml-2"></i>
+                            טיפולים תומכים
+                        </h4>
+                        <ul class="space-y-3 text-base">
+                            <li class="flex items-start">
+                                <i class="fas fa-dot-circle ml-2 mt-1" style="color: #059669;"></i>
+                                <div>
+                                    <p class="font-semibold">פיזיותרפיה:</p>
+                                    <p class="text-sm">שמירה על טווח תנועה, חיזוק שרירים</p>
+                                </div>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-dot-circle ml-2 mt-1" style="color: #059669;"></i>
+                                <div>
+                                    <p class="font-semibold">ריפוי בעיסוק:</p>
+                                    <p class="text-sm">עזרים טכנולוגיים, התאמות סביבתיות</p>
+                                </div>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-dot-circle ml-2 mt-1" style="color: #059669;"></i>
+                                <div>
+                                    <p class="font-semibold">קלינאות תקשורת:</p>
+                                    <p class="text-sm">מערכות תקשורת תומכת, טיפול בבליעה</p>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="accent-section rounded-lg p-6">
+                    <h4 class="text-xl font-bold mb-4">
+                        <i class="fas fa-star ml-2"></i>
+                        פריצת דרך: טיפול DBS (גירוי מוחי עמוק)
+                    </h4>
+                    <div class="space-y-4">
+                        <div class="high-contrast-section rounded p-4">
+                            <p class="font-semibold mb-2 text-lg">מחקר חדשני משנת 2024:</p>
+                            <p class="text-base">דיווח מקרה פירט את היישום המוצלח של DBS בשני ילדים עם דיסטוניה חמורה עקב תסמונת MEPAN.</p>
+                        </div>
+                        <div class="high-contrast-section rounded p-4">
+                            <p class="font-semibold mb-2 text-lg">תוצאות מעודדות:</p>
+                            <p class="text-base">שני המטופלים חוו שיפורים משמעותיים במדדי הדיסטוניה ללא סיבוכים משמעותיים.</p>
+                        </div>
+                        <div class="high-contrast-section rounded p-4">
+                            <p class="font-semibold mb-2 text-lg">משמעות:</p>
+                            <p class="text-base">זוהי ההתקדמות הטיפולית המשמעותית ביותר עבור MEPAN עד כה.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="info-section rounded-lg p-6">
+                    <h4 class="text-xl font-bold mb-4">
+                        <i class="fas fa-flask ml-2"></i>
+                        מחקרים עכשוויים
+                    </h4>
+                    <div class="space-y-4">
+                        <div class="high-contrast-section rounded p-4">
+                            <p class="font-semibold mb-2">מחקר גנטי:</p>
+                            <p class="text-sm">פיתוח טיפולי גנים פוטנציאליים להחלפת הגן הפגום.</p>
+                        </div>
+                        <div class="high-contrast-section rounded p-4">
+                            <p class="font-semibold mb-2">טיפולים מטבוליים:</p>
+                            <p class="text-sm">בדיקת תוספי תזונה שעשויים לעקוף את הפגם הביוכימי.</p>
+                        </div>
+                        <div class="high-contrast-section rounded p-4">
+                            <p class="font-semibold mb-2">מודלים חיוניים:</p>
+                            <p class="text-sm">פיתוח מודלים של המחלה בחיות מעבדה לבדיקת טיפולים חדשים.</p>
+                        </div>
+                        <div class="high-contrast-section rounded p-4">
+                            <p class="font-semibold mb-2">הסבת תרופות:</p>
+                            <p class="text-sm">בדיקת אלפי תרופות קיימות למציאת טיפולים פוטנציאליים.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="success-section rounded-lg p-4">
+                    <h4 class="font-semibold mb-2 text-lg">
+                        <i class="fas fa-lightbulb ml-2"></i>
+                        חשוב לדעת:
+                    </h4>
+                    <p class="text-base">התחום במחקר פעיל. השתתפות במאגרי מידע ומחקרים יכולה לתרום לפיתוח טיפולים עתידיים ולעזור למשפחות אחרות.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- תמיכה ומשאבים -->
+        <section class="high-contrast-section rounded-2xl shadow-xl p-8 mb-8">
+            <div class="section-header rounded-lg p-4 mb-6">
+                <h2 class="text-2xl font-bold">
+                    <i class="fas fa-users text-blue-300 ml-3"></i>
+                    תמיכה ומשאבים - מדריך מלא
+                </h2>
+            </div>
+            <div class="text-gray-800 space-y-6">
                 
-                <div class="p-6">
-                    <!-- Medical Resources -->
-                    <div class="mb-8">
-                        <h3 class="text-xl font-semibold mb-4 text-orange-800">
-                            <i class="fas fa-book-medical mr-2"></i>מקורות רפואיים ומחקריים
-                        </h3>
-                        <div class="grid md:grid-cols-2 gap-4">
-                            <div class="bg-orange-50 p-4 rounded-lg">
-                                <h4 class="font-semibold mb-2">מאגרי מידע מדעיים:</h4>
-                                <ul class="space-y-1 text-sm">
-                                    <li>• GeneReviews (NCBI) - מידע קליני מקיף</li>
-                                    <li>• PubMed - מאמרי מחקר עדכניים</li>
-                                    <li>• Orphanet - מחלות נדירות</li>
-                                    <li>• OMIM - מידע גנטי מפורט</li>
-                                </ul>
-                            </div>
-                            <div class="bg-orange-50 p-4 rounded-lg">
-                                <h4 class="font-semibold mb-2">מומחים בישראל:</h4>
-                                <ul class="space-y-1 text-sm">
-                                    <li>• ד"ר גלי היימר - שיבא תל השומר</li>
-                                    <li>• ד"ר ברוריה בן-זאב - שיבא תל השומר</li>
-                                    <li>• מרכזים רפואיים מובילים</li>
-                                </ul>
-                            </div>
+                <!-- משאבים בישראל -->
+                <div class="accent-section rounded-lg p-6">
+                    <h3 class="text-xl font-bold mb-4">
+                        <i class="fas fa-map-marker-alt ml-2"></i>
+                        משאבים חיוניים בישראל
+                    </h3>
+                </div>
+
+                <div class="overflow-x-auto">
+                    <table class="data-table w-full rounded-lg overflow-hidden">
+                        <thead>
+                            <tr>
+                                <th class="px-4 py-3 text-right">סוג המשאב</th>
+                                <th class="px-4 py-3 text-right">שם הארגון/מרפאה</th>
+                                <th class="px-4 py-3 text-right">פרטי קשר</th>
+                                <th class="px-4 py-3 text-right">מה הם מספקים</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="px-4 py-3 font-semibold">מרכז רפואי מוביל</td>
+                                <td class="px-4 py-3">המרכז הרב תחומי לנוירוגנטיקה<br>בי"ח ספרא לילדים<br>מרכז רפואי שיבא</td>
+                                <td class="px-4 py-3">
+                                    מנהלת: ד"ר גלי היימר<br>
+                                    טלפון: 03-5303098<br>
+                                    דוא"ל: neurogenetics@sheba.health.gov.il
+                                </td>
+                                <td class="px-4 py-3">מומחיות עולמית בתסמונת MEPAN. אבחון מקיף, בניית תוכנית טיפול וניהול, וחיבור למחקרים.</td>
+                            </tr>
+                            <tr>
+                                <td class="px-4 py-3 font-semibold">תמיכה כלכלית</td>
+                                <td class="px-4 py-3">המוסד לביטוח לאומי</td>
+                                <td class="px-4 py-3">
+                                    הגשת תביעה לגמלת ילד נכה<br>
+                                    סעיף "תסמונת נדירה"<br>
+                                    אתר: btl.gov.il<br>
+                                    מוקד: *6050
+                                </td>
+                                <td class="px-4 py-3">תמיכה כלכלית (קצבה חודשית) לילדים עם מחלות נדירות המטילות עומס טיפולי כבד. זכאות לתו נכה והטבות נלוות.</td>
+                            </tr>
+                            <tr>
+                                <td class="px-4 py-3 font-semibold">תמיכה ארצית</td>
+                                <td class="px-4 py-3">איל"ן - איגוד ישראלי לילדים ולבוגרים נפגעים</td>
+                                <td class="px-4 py-3">
+                                    טלפון: 03-5248141<br>
+                                    אתר: ilan-israel.co.il
+                                </td>
+                                <td class="px-4 py-3">תמיכה באנשים עם מוגבלות פיזית/מוטורית. סיוע ברכישת ציוד שיקומי, מימון טיפולים פרא-רפואיים, פעילויות חברתיות וקייטנות.</td>
+                            </tr>
+                            <tr>
+                                <td class="px-4 py-3 font-semibold">תמיכה מתקדמת</td>
+                                <td class="px-4 py-3">בית איזי שפירא</td>
+                                <td class="px-4 py-3">
+                                    טלפון: 09-7701222<br>
+                                    אתר: beitissie.org.il
+                                </td>
+                                <td class="px-4 py-3">ארגון מוביל במתן שירותים למוגבלויות מורכבות. מציע הידרותרפיה, חדרי סנוזלן, מרכזי טכנולוגיה מסייעת ותוכניות תמיכה למשפחה.</td>
+                            </tr>
+                            <tr>
+                                <td class="px-4 py-3 font-semibold">תמיכה ומידע</td>
+                                <td class="px-4 py-3">קשר - הבית של המשפחות המיוחדות</td>
+                                <td class="px-4 py-3">
+                                    קו מידע ארצי: 1700-501-601<br>
+                                    אתר: kesher.org.il
+                                </td>
+                                <td class="px-4 py-3">מספק מידע, הכוונה ותמיכה רגשית למשפחות של ילדים עם צרכים מיוחדים, ומסייע בניווט במערכות הבריאות והחינוך ובמיצוי זכויות.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- ארגונים בינלאומיים -->
+                <div class="info-section rounded-lg p-6">
+                    <h3 class="text-xl font-bold mb-4">
+                        <i class="fas fa-globe ml-2"></i>
+                        ארגונים בינלאומיים
+                    </h3>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                        <div class="high-contrast-section rounded p-4">
+                            <p class="font-semibold mb-2">MEPAN Foundation</p>
+                            <p class="text-sm mb-2">ארגון ייעודי למשפחות MEPAN</p>
+                            <a href="https://www.mepan.org" class="text-blue-600 underline">www.mepan.org</a>
+                        </div>
+                        <div class="high-contrast-section rounded p-4">
+                            <p class="font-semibold mb-2">NBIA Disorders Association</p>
+                            <p class="text-sm mb-2">הארגון המוביל למשפחות NBIA</p>
+                            <a href="https://www.nbiadisorders.org" class="text-blue-600 underline">www.nbiadisorders.org</a>
+                        </div>
+                        <div class="high-contrast-section rounded p-4">
+                            <p class="font-semibold mb-2">UMDF</p>
+                            <p class="text-sm mb-2">תמיכה במחלות מיטוכונדריאליות</p>
+                            <a href="https://www.umdf.org" class="text-blue-600 underline">www.umdf.org</a>
                         </div>
                     </div>
+                </div>
 
-                    <!-- Support Organizations -->
-                    <div class="mb-8">
-                        <h3 class="text-xl font-semibold mb-4 text-orange-800">
-                            <i class="fas fa-hands-helping mr-2"></i>ארגוני תמיכה
-                        </h3>
-                        <div class="space-y-4">
-                            <div class="bg-gradient-to-r from-blue-50 to-blue-100 p-4 rounded-lg border-r-4 border-blue-500">
-                                <h4 class="font-semibold text-blue-800 mb-2">
-                                    <i class="fas fa-globe mr-1"></i>NBIA Disorders Association
-                                </h4>
-                                <p class="text-sm mb-2">הארגון המרכזי למשפחות MEPAN ומחלות NBIA דומות</p>
-                                <div class="text-xs space-y-1">
-                                    <p><strong>שירותים:</strong> ייעוץ גנטי, תמיכה משפחתית, עדכוני מחקר</p>
-                                    <p><strong>יצירת קשר:</strong> info@nbiacure.org</p>
-                                </div>
-                            </div>
-                            
-                            <div class="bg-gradient-to-r from-green-50 to-green-100 p-4 rounded-lg border-r-4 border-green-500">
-                                <h4 class="font-semibold text-green-800 mb-2">
-                                    <i class="fas fa-leaf mr-1"></i>MEPAN Foundation
-                                </h4>
-                                <p class="text-sm mb-2">קרן ייעודית למחקר ותמיכה בתסמונת MEPAN</p>
-                                <div class="text-xs space-y-1">
-                                    <p><strong>מטרות:</strong> קידום מחקר, תמיכה במשפחות</p>
-                                    <p><strong>אתר:</strong> www.mepan.org</p>
-                                </div>
-                            </div>
-                            
-                            <div class="bg-gradient-to-r from-purple-50 to-purple-100 p-4 rounded-lg border-r-4 border-purple-500">
-                                <h4 class="font-semibold text-purple-800 mb-2">
-                                    <i class="fas fa-dna mr-1"></i>United Mitochondrial Disease Foundation
-                                </h4>
-                                <p class="text-sm mb-2">תמיכה במחלות מיטוכונדריאליות</p>
-                                <div class="text-xs space-y-1">
-                                    <p><strong>קו תמיכה:</strong> (888) 900-6486</p>
-                                    <p><strong>מאגר מחקר:</strong> mitoSHARE</p>
-                                </div>
-                            </div>
+                <!-- מקורות מידע -->
+                <div class="warning-section rounded-lg p-6">
+                    <h3 class="text-xl font-bold mb-4">
+                        <i class="fas fa-book ml-2"></i>
+                        מקורות מידע אמינים
+                    </h3>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                        <div class="high-contrast-section rounded p-4">
+                            <p class="font-semibold mb-2">GeneReviews</p>
+                            <p class="text-sm">מידע רפואי מעודכן על MECR</p>
+                        </div>
+                        <div class="high-contrast-section rounded p-4">
+                            <p class="font-semibold mb-2">Orphanet</p>
+                            <p class="text-sm">מאגר מחלות נדירות</p>
+                        </div>
+                        <div class="high-contrast-section rounded p-4">
+                            <p class="font-semibold mb-2">PubMed</p>
+                            <p class="text-sm">מאמרים מדעיים עדכניים</p>
                         </div>
                     </div>
+                </div>
 
-                    <!-- Technology Resources -->
-                    <div class="bg-gray-50 p-6 rounded-lg">
-                        <h3 class="text-xl font-semibold mb-4 text-gray-800">
-                            <i class="fas fa-laptop mr-2"></i>משאבים טכנולוגיים מומלצים
-                        </h3>
-                        <div class="grid md:grid-cols-3 gap-4 text-sm">
-                            <div>
-                                <h4 class="font-semibold mb-2">תקשורת תומכת:</h4>
-                                <ul class="space-y-1">
-                                    <li>• Proloquo2Go</li>
-                                    <li>• TouchChat</li>
-                                    <li>• LAMP Words for Life</li>
-                                    <li>• Tobii Dynavox (מיקוד מבט)</li>
-                                </ul>
-                            </div>
-                            <div>
-                                <h4 class="font-semibold mb-2">עזרי ראייה:</h4>
-                                <ul class="space-y-1">
-                                    <li>• JAWS (קורא מסך)</li>
-                                    <li>• VoiceOver (Apple)</li>
-                                    <li>• Seeing AI</li>
-                                    <li>• זכוכיות מגדלות דיגיטליות</li>
-                                </ul>
-                            </div>
-                            <div>
-                                <h4 class="font-semibold mb-2">ציוד מסייע:</h4>
-                                <ul class="space-y-1">
-                                    <li>• Liftware (כלי אכילה מייצבים)</li>
-                                    <li>• מקלדות מותאמות</li>
-                                    <li>• מתגים גדולים</li>
-                                    <li>• מערכות בקרת סביבה</li>
-                                </ul>
-                            </div>
-                        </div>
+                <!-- תמיכה רגשית -->
+                <div class="success-section rounded-lg p-6">
+                    <h3 class="text-xl font-bold mb-4">
+                        <i class="fas fa-heart ml-2"></i>
+                        תמיכה רגשית וקהילתית
+                    </h3>
+                    <div class="space-y-3 text-base">
+                        <p><strong>קבוצות הורים:</strong> חיבור למשפחות אחרות במצב דומה דרך הארגונים הבינלאומיים.</p>
+                        <p><strong>ייעוץ נפשי:</strong> תמיכה מקצועית בהתמודדות עם האבחנה והשינויים.</p>
+                        <p><strong>רשתות חברתיות:</strong> קבוצות פייסבוק פרטיות למשפחות MEPAN ו-NBIA.</p>
+                        <p><strong>הדרכה משפחתית:</strong> ייעוץ לכל בני המשפחה כיצד להתמודד ולתמוך.</p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Key Principles -->
-        <section id="principles" class="print-section">
-            <div class="bg-white rounded-xl soft-shadow mb-8 overflow-hidden">
-                <div class="bg-indigo-600 text-white p-6">
-                    <h2 class="text-3xl font-bold flex items-center">
-                        <i class="fas fa-lightbulb mr-3"></i>עקרונות מנחים לטיפול
-                    </h2>
-                </div>
-                
-                <div class="p-6">
-                    <div class="grid md:grid-cols-2 gap-6">
-                        <div class="space-y-4">
-                            <div class="tip-box p-4 rounded-lg">
-                                <h4 class="font-semibold text-green-800 mb-2">
-                                    <i class="fas fa-family mr-1"></i>גישה ממוקדת אדם ומשפחה
-                                </h4>
-                                <p class="text-sm">שיתוף המשפחה בכל החלטה, הכרה בייחוד של כל ילד והתאמה אישית</p>
-                            </div>
-                            
-                            <div class="important-note p-4 rounded-lg">
-                                <h4 class="font-semibold text-orange-800 mb-2">
-                                    <i class="fas fa-chart-line mr-1"></i>חשיבה פרוגרסיבית
-                                </h4>
-                                <p class="text-sm">התאמת הטיפול לשלבי המחלה השונים והיערכות מוקדמת לשינויים</p>
-                            </div>
-                        </div>
-                        
-                        <div class="space-y-4">
-                            <div class="definition-box p-4 rounded-lg">
-                                <h4 class="font-semibold text-blue-800 mb-2">
-                                    <i class="fas fa-users-cog mr-1"></i>עבודת צוות רב-תחומית
-                                </h4>
-                                <p class="text-sm">שיתוף פעולה עם נוירולוג, פיזיותרפיה, קלינאות תקשורת ורופא עיניים</p>
-                            </div>
-                            
-                            <div class="bg-pink-50 p-4 rounded-lg border-r-4 border-pink-500">
-                                <h4 class="font-semibold text-pink-800 mb-2">
-                                    <i class="fas fa-heart mr-1"></i>איכות חיים במרכז
-                                </h4>
-                                <p class="text-sm">מטרת הטיפול היא לשפר את איכות החיים, השתתפות משמעותית וכבוד האדם</p>
-                            </div>
-                        </div>
+        <!-- סיכום -->
+        <section class="high-contrast-section rounded-2xl shadow-xl p-8 mb-8">
+            <div class="section-header rounded-lg p-4 mb-6">
+                <h2 class="text-2xl font-bold">
+                    <i class="fas fa-hand-holding-heart text-pink-300 ml-3"></i>
+                    מסר סיכום - הדרך קדימה
+                </h2>
+            </div>
+            <div class="text-gray-800 space-y-6">
+                <div class="primary-section rounded-lg p-8 text-center">
+                    <h3 class="text-2xl font-bold mb-6">הדרך קדימה</h3>
+                    <div class="space-y-4 text-lg">
+                        <p>תסמונת MEPAN היא מחלה מורכבת ומאתגרת, אך היא לא מגדירה את הילד שלכם או את המשפחה שלכם.</p>
+                        <p>עם הידע הנכון, התמיכה המתאימה, והטיפול הרב-תחומי, ניתן לשפר משמעותיים את איכות החיים.</p>
+                        <p><strong>אתם לא לבד במסע הזה.</strong></p>
                     </div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div class="info-section rounded-lg p-6 text-center">
+                        <i class="fas fa-lightbulb text-4xl mb-4" style="color: #1d4ed8;"></i>
+                        <h4 class="font-bold text-lg mb-2">ידע הוא כוח</h4>
+                        <p class="text-sm">הבנת המחלה מאפשרת קבלת החלטות מושכלות</p>
+                    </div>
+                    
+                    <div class="success-section rounded-lg p-6 text-center">
+                        <i class="fas fa-users text-4xl mb-4" style="color: #059669;"></i>
+                        <h4 class="font-bold text-lg mb-2">קהילה תומכת</h4>
+                        <p class="text-sm">חיבור למשפחות אחרות יכול להיות מקור כוח עצום</p>
+                    </div>
+                    
+                    <div class="warning-section rounded-lg p-6 text-center">
+                        <i class="fas fa-heart text-4xl mb-4" style="color: #d97706;"></i>
+                        <h4 class="font-bold text-lg mb-2">אהבה וחמלה</h4>
+                        <p class="text-sm">הדבר החשוב ביותר שיש לכם לתת</p>
+                    </div>
+                </div>
+
+                <div class="accent-section rounded-lg p-6">
+                    <h4 class="text-xl font-semibold mb-4 text-center">
+                        <i class="fas fa-envelope ml-2"></i>
+                        זמינות לשאלות
+                    </h4>
+                    <p class="text-center text-lg">אנחנו כאן כדי ללוות אתכם בדרך. אל תהססו לשאול כל שאלה, קטנה כגדולה. יחד נמצא את הדרכים הטובות ביותר לתמוך בילד שלכם ובמשפחה כולה.</p>
+                    <p class="text-center mt-4 font-semibold text-xl">בברכה ותמיכה,<br>הצוות הרפואי והמקצועי</p>
                 </div>
             </div>
         </section>
+
+        <!-- Footer -->
+        <footer class="text-center py-6">
+            <div class="high-contrast-section rounded-lg p-6">
+                <p class="text-base font-medium mb-2">מסמך זה נכתב למטרות הדרכה ומידע בלבד ואינו מחליף ייעוץ רפואי מקצועי</p>
+                <p class="text-sm">עדכון אחרון: דצמבר 2024 | מבוסס על מחקרים עדכניים ו-GeneReviews</p>
+                <div class="mt-4 space-y-1 text-xs">
+                    <p><strong>מקורות עיקריים:</strong></p>
+                    <p>GeneReviews (NCBI) • MEPAN Foundation • NBIA Disorders Association • UMDF</p>
+                    <p>מחקרי 2024 על טיפול DBS • מומחיות קלינית מהמרכז הרב-תחומי לנוירוגנטיקה, שיבא</p>
+                </div>
+            </div>
+        </footer>
     </div>
-
-    <!-- Footer -->
-    <footer class="bg-gray-800 text-white py-8 mt-12">
-        <div class="container mx-auto px-4 text-center">
-            <div class="flex justify-center items-center mb-4">
-                <i class="fas fa-brain text-3xl mr-3 text-indigo-400"></i>
-                <div>
-                    <h3 class="text-xl font-semibold">מדריך MEPAN לריפוי בעיסוק</h3>
-                    <p class="text-gray-400">מבוסס על ניתוח מקיף של מערכות AI מובילות</p>
-                </div>
-            </div>
-            
-            <div class="border-t border-gray-600 pt-4 mt-4">
-                <p class="text-sm text-gray-400 mb-2">
-                    המדריך נוצר על בסיס ניתוח השוואתי של תשובות מערכות AI: ChatGPT, Gemini, Claude, Genspark ו-Perplexity
-                </p>
-                <div class="flex justify-center space-x-4 text-xs">
-                    <span>עדכן אחרון: דצמבר 2024</span>
-                    <span>•</span>
-                    <span>לשימוש מקצועי בלבד</span>
-                    <span>•</span>
-                    <span>יש להתייעץ עם מומחים</span>
-                </div>
-            </div>
-        </div>
-    </footer>
-
-    <!-- JavaScript for smooth scrolling -->
-    <script>
-        // Smooth scrolling for navigation links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-            });
-        });
-
-        // Add some interactivity to tables
-        document.querySelectorAll('tr').forEach(row => {
-            row.addEventListener('mouseenter', function() {
-                this.style.backgroundColor = this.style.backgroundColor || 'rgba(79, 70, 229, 0.05)';
-            });
-            
-            row.addEventListener('mouseleave', function() {
-                if (!this.classList.contains('hover:bg-indigo-50') && 
-                    !this.classList.contains('hover:bg-emerald-50') && 
-                    !this.classList.contains('hover:bg-purple-50')) {
-                    this.style.backgroundColor = '';
-                }
-            });
-        });
-
-        // Add print styles optimization
-        window.addEventListener('beforeprint', function() {
-            document.body.style.fontSize = '12pt';
-            document.body.style.lineHeight = '1.4';
-        });
-
-        window.addEventListener('afterprint', function() {
-            document.body.style.fontSize = '';
-            document.body.style.lineHeight = '';
-        });
-    </script>
 </body>
 </html>
