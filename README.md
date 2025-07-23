@@ -1,0 +1,1 @@
+מדריך מפורט   להורים  https://docs.google.com/document/d/1zuTuoPGp4fLeKEyTLCpfe5vW8vIJ8-TPS-ynyjdb7uQ/edit?usp=sharing             מכתב להורים:  https://docs.google.com/document/d/1k_d7KkfYZX9CVUYmEL-vtWt1pe2d9Kx6dEOanMH_4_c/edit?tab=t.0    נתוחי AI   https://docs.google.com/document/d/1OcPYhKcqMDbeeGYMhTmostQIzS_j-fqGKTJ8pX4iBzs/edit?usp=sharing
